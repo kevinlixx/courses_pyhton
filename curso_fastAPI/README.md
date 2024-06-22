@@ -1,4 +1,5 @@
 # FastAPI
+FastAPI es un framework de desarrollo web de alto rendimiento para Python. Permite crear aplicaciones web de manera rápida y eficiente, aprovechando las características modernas de Python, como la tipificación estática y la asincronía. Con FastAPI, puedes construir APIs robustas y escalables de forma sencilla, gracias a su enfoque en la simplicidad y la productividad del desarrollador. Además, FastAPI ofrece una documentación automática y interactiva, lo que facilita la comprensión y el uso de las APIs creadas. En resumen, FastAPI es una excelente opción para desarrolladores que buscan construir aplicaciones web rápidas, seguras y fáciles de mantener en Python.
 
 ## Configuración de un servidor con FastAPI
 priemra mente instalaremos fastAPI
