@@ -88,3 +88,132 @@ persona = Persona("Juan", 30)
 >[!IMPORTANT]
 > el super() se usa para llamar al constructor de la clase padre, es decir a la clase principal
 >el self se usa para llamar a los metodos de la misma clase
+
+## MRO (Method Resolution Order)
+- orden en el que python busca los metodos en la herencia multiple
+- se puede ver con el metodo `mro()` de la clase
+- ejemplo:
+```python
+class A:
+    def hablar(self):
+        print('Hola desde A')
+
+class B(A):
+    def hablar(self):
+        print('Hola desde B')
+
+class C(A):
+    def hablar(self):
+        print('Hola desde C')
+
+class D(B, C):
+    pass
+
+d = D()
+d.hablar()
+```
+- en este caso el metodo hablar de la clase B se ejecutara por que es la primera clase que se hereda
+- para ver el orden de ejecucion se usa el metodo `mro()` de la clase
+```python
+print(D.mro())
+```
+- el resultado sera:
+``` sh
+[<class '__main__.D'>, <class '__main__.B'>, <class '__main__.C'>, <class '__main__.A'>, <class 'object'>]
+```
+
+## Polimorfismo
+- El polimorfismo es un concepto fundamental en la programación orientada a objetos que nos permite tratar objetos de diferentes clases de manera uniforme. En otras palabras, el polimorfismo nos permite utilizar un objeto de una clase derivada como si fuera un objeto de la clase base.
+- tipos de polimorfismo:
+    - `Polimorfismo de herecia`: se puede hacer polimorfismo de herecia cuando se hereda de una clase y se sobreescribe un metodo de la clase padre
+    
+
+    - `Polimorfismo de sobrecarga`: se puede hacer polimorfismo de sobrecarga cuando se sobreescribe un metodo de la clase padre
+    - `Polimorfismo de coersión`: se puede hacer polimorfismo de coersión cuando se cambia el tipo de dato de una variable
+
+>[!NOTE]
+> en los lenguajes de tipado dinamico no es necesario hacer un polimorfismo de herecia, ya que se puede hacer polimorfismo de sobrecarga
+
+### enlace dinamico
+- el enlace dinamico es cuando se llama a un metodo de una clase y se ejecuta el metodo de la clase hija
+
+
+### enlace estatico
+- el enlace estatico es cuando se llama a un metodo de una clase y se ejecuta el metodo de la clase padre
+
+## Encapsulamiento
+- El encapsulamiento es un concepto fundamental en la programación orientada a objetos que nos permite ocultar los detalles internos de una clase y proteger los datos de la clase de accesos no autorizados.
+
+- En Python, el encapsulamiento se logra utilizando métodos y atributos privados. Los métodos y atributos privados se definen con dos guiones bajos al principio del nombre, como `__nombre_del_atributo` o `__nombre_del_metodo`.
+
+- cuando solo tiene un guion bajo al principio del nombre del atributo o metodo se le llama protegido
+
+- Los métodos y atributos privados solo pueden ser accedidos desde dentro de la clase en la que se definen. Si intentamos acceder a un método o atributo privado desde fuera de la clase, obtendremos un error.
+
+- Para acceder a los métodos y atributos privados desde fuera de la clase, podemos definir métodos públicos que actúen como interfaz para acceder a los métodos y atributos privados.
+
+```python
+class Miclase:
+    def __init__(self):
+        self._protegido = "Soy protegido"
+        self.__muy_privado = "Soy muy privado"
+        self.publico = "Soy publico"
+```
+
+## Getters y Setters
+- Los getters y setters son métodos que nos permiten acceder y modificar los atributos privados de una clase desde fuera de la clase.
+### Getters
+- Los getters son métodos que nos permiten acceder a los atributos privados de una clase desde fuera de la clase.
+- Para definir un getter, creamos un método público que devuelva el valor del atributo privado.
+
+- El nombre del getter suele ser `get_nombre_del_atributo`, donde `nombre_del_atributo` es el nombre del atributo privado al que queremos acceder.
+
+### Setters
+
+- Los setters son métodos que nos permiten modificar los atributos privados de una clase desde fuera de la clase.
+
+- Para definir un setter, creamos un método público que reciba un parámetro y modifique el valor del atributo privado.
+
+- El nombre del setter suele ser `set_nombre_del_atributo`, donde `nombre_del_atributo` es el nombre del atributo privado que queremos modificar.
+
+### Ejemplo
+```python
+    class Persona:
+        def __init__(self, nombre, edad):
+            self.__nombre = nombre
+            self.__edad = edad
+        
+        def get_nombre(self):#muestra el nombre
+            return self.__nombre
+        
+        def set_nombre(self, nombre):#permite cambiar el nombre 
+            self.__nombre = nombre  
+
+    dato = Persona("Juan", 30) #Crea un objeto de la clase Persona
+    print(dato.get_nombre())# Muestra el nombre
+    dato.set_nombre("Pedro") #Cambia el nombre
+    print(dato.get_nombre()) # Muestra el nombre cambiado
+```
+
+## Decoradores
+- Los decoradores son una característica avanzada de Python que nos permiten modificar o extender el comportamiento de una función o método.
+- Los decoradores se utilizan para añadir funcionalidades a una función o método sin modificar su código.
+- Los decoradores se definen utilizando la sintaxis `@nombre_del_decorador` encima de la definición de la función o método que queremos decorar.
+- Los decoradores pueden recibir argumentos, lo que nos permite personalizar su comportamiento.
+- Los decoradores se utilizan en la programación orientada a objetos para añadir funcionalidades a los métodos de una clase, como por ejemplo, la validación de datos o la medición del tiempo de ejecución de un método.
+
+### Ejemplo
+    ```python
+        def decorador(funcion):
+            def nueva_funcion():
+                print("Antes de llamar a la función")
+                funcion()
+                print("Después de llamar a la función")
+            return nueva_funcion
+
+        @decorador
+        def saludo():
+            print("Hola, mundo!")
+
+        Saludo()
+    ```
