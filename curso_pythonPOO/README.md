@@ -126,7 +126,6 @@ print(D.mro())
 - El polimorfismo es un concepto fundamental en la programación orientada a objetos que nos permite tratar objetos de diferentes clases de manera uniforme. En otras palabras, el polimorfismo nos permite utilizar un objeto de una clase derivada como si fuera un objeto de la clase base.
 - tipos de polimorfismo:
     - `Polimorfismo de herecia`: se puede hacer polimorfismo de herecia cuando se hereda de una clase y se sobreescribe un metodo de la clase padre
-    
 
     - `Polimorfismo de sobrecarga`: se puede hacer polimorfismo de sobrecarga cuando se sobreescribe un metodo de la clase padre
     - `Polimorfismo de coersión`: se puede hacer polimorfismo de coersión cuando se cambia el tipo de dato de una variable
@@ -217,3 +216,49 @@ class Miclase:
 
         Saludo()
     ```
+### propiedades de los decoradores
+- el @property se usa para definir un metodo como un atributo
+- mos permite acceder a un metodo como si fuera un atributo
+- se usa para no tener que llamar a un metodo con parentesis
+```python
+class Persona:
+    def __init__(self, nombre, edad):
+        self.__nombre = nombre
+        self.__edad = edad
+
+    @property #indica que es una propiedad
+    def nombre(self):#muestra el nombre
+        return self.__nombre
+    
+    @nombre.setter #permite modificar el nombre
+    def nombre(self, new_nombre):
+        self.__nombre = new_nombre
+
+    @nombre.deleter #permite eliminar el nombre
+    def nombre(self):
+        del self.__nombre
+```
+#### ventajas
+- se puede acceder,modificar y eliminar a un metodo como si fuera un atributo
+- se puede acceder a un metodo sin parentesis
+
+## Abstracción
+- La abstracción es un concepto fundamental en la programación orientada a objetos que nos permite modelar objetos del mundo real en nuestro software.
+- La abstracción nos permite centrarnos en los aspectos más importantes de un objeto y ocultar los detalles menos relevantes.
+### clases abstractas
+- Las clases abstractas son clases que no pueden ser instanciadas directamente, sino que sirven como plantilla para definir otras clases.
+#### ventajas
+- Las clases abstractas nos permiten definir métodos que deben ser implementados por las clases derivadas.
+- Las clases abstractas nos permiten definir métodos que deben ser implementados por las clases derivadas.
+
+## Metodos especiales
+- Los métodos especiales son métodos predefinidos en Python que nos permiten añadir funcionalidades especiales a nuestras clases.
+- Los métodos especiales se definen utilizando doble guion bajo al principio y al final del nombre, como `__nombre_del_metodo__`.
+### Ejemplos
+- `__init__` : se llama automáticamente cuando se crea un objeto a partir de una clase.
+- `__str__` : se llama automáticamente cuando se convierte un objeto a una cadena de texto.
+- `__repr__` : se llama automáticamente cuando se representa un objeto se diferencia del __str__ por que .
+- `__len__` : se llama automáticamente cuando se llama a la función `len()` sobre un objeto.
+- `__add__` : se llama automáticamente cuando se suman dos objetos.
+- `__sub__` : se llama automáticamente cuando se restan dos objetos.
+
