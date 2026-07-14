@@ -1,2 +1,27 @@
 {
+	"editor.renderWhitespace": "all",
+	"editor.semanticHighlighting.enabled": true,
+	"editor.semanticTokenColorCustomizations": {
+		"rules": {
+			"variable": "#0EA5E9",
+			"parameter": "#0EA5E9",
+			"property": "#0EA5E9"
+		}
+	},
+	"editor.tokenColorCustomizations": {
+		"textMateRules": [
+			{
+				"scope": [
+					"variable",
+					"variable.other",
+					"variable.parameter"
+				],
+				"settings": {
+					"foreground": "#0EA5E9"
+				}
+			}
+		]
+	}
+}
+{
 }
